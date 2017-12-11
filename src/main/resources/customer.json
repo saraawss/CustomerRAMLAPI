@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "type": "object",
+  "description": "A Customer item",
+  "id": "Customer",
+  "javaType": "customer.controller.Customer",
+  "properties": {
+    "id": {
+      "type": "long"
+    },
+    "firstname": {
+      "type": "string"
+    },
+    "lastname": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    }
+  }
+}

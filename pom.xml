@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>de.adorsys</groupId>
+  <artifactId>de.adorsys</artifactId>
+  <version>1.5</version>
+
+  <name>CustomerApi</name>
+  <description>CustomerApi</description>
+
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>1.4.7.RELEASE</version>
+    <!--version>1.3.5.RELEASE</version-->
+    <relativePath />
+  </parent>
+  
+  <properties>
+    <java.version>1.8</java.version>
+  </properties>
+  
+
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>commons-lang</groupId>
+      <artifactId>commons-lang</artifactId>
+      <version>2.6</version>
+    </dependency>
+    <dependency>
+	    <groupId>com.fasterxml.jackson.core</groupId>
+	    <artifactId>jackson-databind</artifactId>
+	    <version>2.5.0</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.springframework.boot</groupId>
+	    <artifactId>spring-boot-starter-data-jpa</artifactId>
+	    <version>1.2.3.RELEASE</version>
+	</dependency>
+	<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-core</artifactId>
+		</dependency>
+	<!-- Runtime -->
+	<dependency>
+		<groupId>com.h2database</groupId>
+		<artifactId>h2</artifactId>
+		<scope>runtime</scope>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-thymeleaf</artifactId>
+	</dependency>
+	<dependency>
+	    <groupId>org.hibernate</groupId>
+	    <artifactId>hibernate-core</artifactId>
+	    <version>5.2.12.Final</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.hibernate</groupId>
+	    <artifactId>hibernate-entitymanager</artifactId>
+	    <version>5.2.3.Final</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.webjars</groupId>
+	    <artifactId>angularjs</artifactId>
+	    <version>1.4.9</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.webjars</groupId>
+	    <artifactId>angular-datatables</artifactId>
+	    <version>0.4.0</version>
+	</dependency>
+  </dependencies>
+
+  <build>
+    <finalName>${project.artifactId}</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+      
+      <!--plugin>
+        <groupId>com.phoenixnap.oss</groupId>
+        <artifactId>springmvc-raml-plugin</artifactId>
+        <version>0.10.11</version>
+        <configuration>
+          <ramlPath>src/main/resources/api.raml</ramlPath>
+          <outputRelativePath>target/generated-sources</outputRelativePath>
+          <addTimestampFolder>false</addTimestampFolder>
+          <basePackage>de.adorsys.ramlspringboot.api</basePackage>
+          <baseUri>/api</baseUri>
+          <schemaUseLongIntegers>true</schemaUseLongIntegers>
+          <seperateMethodsByContentType>false</seperateMethodsByContentType>
+          <rule>com.phoenixnap.oss.ramlapisync.generation.rules.Spring4ControllerInterfaceRule</rule>
+        </configuration>
+        <executions>
+          <execution>
+            <id>generate-springmvc-endpoints</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>generate-springmvc-endpoints</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin-->
+      <plugin>
+		  <groupId>com.phoenixnap.oss</groupId>
+		  <artifactId>springmvc-raml-plugin</artifactId>
+		  <version>0.10.11</version>
+		  <configuration>
+		    <ramlPath>src/main/resources/api.raml</ramlPath>
+			<outputRelativePath>src/main/java</outputRelativePath>
+		    <addTimestampFolder>false</addTimestampFolder>
+		    <basePackage>customer.controller</basePackage>
+		    <baseUri>/api</baseUri>
+		    <generateUnreferencedSchemas>true</generateUnreferencedSchemas>
+			<generationConfig>
+				<includeAdditionalProperties>false</includeAdditionalProperties>
+			</generationConfig>
+			<seperateMethodsByContentType>false</seperateMethodsByContentType>
+			<rule>com.phoenixnap.oss.ramlapisync.generation.rules.Spring4ControllerDecoratorRule</rule>
+			<ruleConfiguration>			
+			</ruleConfiguration>
+		  </configuration>
+		  <executions>
+		    <execution>
+		      <id>generate-springmvc-endpoints</id>
+		      <phase>compile</phase>
+		      <goals>
+		        <goal>generate-springmvc-endpoints</goal>
+		      </goals>
+		    </execution>
+		  </executions>
+	  </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <version>3.0.0</version>
+        <executions>
+          <execution>
+            <id>include-springmvc-endpoints</id>
+            <phase>process-sources</phase>
+            <goals>
+              <goal>add-source</goal>
+            </goals>
+            <configuration>
+              <sources>
+              	<source>src/main/java</source>
+              </sources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      
+    </plugins>
+  </build>
+
+</project>
