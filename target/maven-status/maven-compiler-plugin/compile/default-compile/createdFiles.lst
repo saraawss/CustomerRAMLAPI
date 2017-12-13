@@ -8,6 +8,5 @@ customer/security/JWTAuthenticationFilter.class
 customer/security/TokenAuthenticationService.class
 customer/entity/CustomerTable.class
 customer/Application.class
-customer/controller/PageController.class
 customer/controller/Customer.class
 customer/impl/CustomerControllerImpl.class
