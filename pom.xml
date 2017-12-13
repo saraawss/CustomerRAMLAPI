@@ -53,10 +53,7 @@
 		<artifactId>h2</artifactId>
 		<scope>runtime</scope>
 	</dependency>
-	<dependency>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-thymeleaf</artifactId>
-	</dependency>
+	
 	<dependency>
 	    <groupId>org.hibernate</groupId>
 	    <artifactId>hibernate-core</artifactId>
@@ -67,15 +64,15 @@
 	    <artifactId>hibernate-entitymanager</artifactId>
 	    <version>5.2.3.Final</version>
 	</dependency>
+	
 	<dependency>
-	    <groupId>org.webjars</groupId>
-	    <artifactId>angularjs</artifactId>
-	    <version>1.4.9</version>
+	    <groupId>org.springframework.boot</groupId>
+	    <artifactId>spring-boot-starter-security</artifactId>
 	</dependency>
 	<dependency>
-	    <groupId>org.webjars</groupId>
-	    <artifactId>angular-datatables</artifactId>
-	    <version>0.4.0</version>
+	    <groupId>io.jsonwebtoken</groupId>
+	    <artifactId>jjwt</artifactId>
+	    <version>0.7.0</version>
 	</dependency>
   </dependencies>
 

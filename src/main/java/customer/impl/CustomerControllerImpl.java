@@ -66,11 +66,14 @@ public class CustomerControllerImpl implements CustomerController {
 		CustomerTable customerTable = customerRepository.findOne(id);
 		
 		Customer customer = new Customer();
-		customer.setId(customerTable.getId());
-		customer.setFirstname(customerTable.getFirstname());
-		customer.setLastname(customerTable.getLastname());
-		customer.setAddress(customerTable.getAddress());
-		//return ResponseEntity.ok(customer);
+		
+		if(customerTable != null) {
+			customer.setId(customerTable.getId());
+			customer.setFirstname(customerTable.getFirstname());
+			customer.setLastname(customerTable.getLastname());
+			customer.setAddress(customerTable.getAddress());
+		}
+		
 		return ResponseEntity.<Customer>ok().body(customer);
 	}
 
