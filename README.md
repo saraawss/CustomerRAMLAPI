@@ -2,6 +2,8 @@
 ## Overview
 This system is implemented by RAML, Java, SpringBoot.
 
+Generated CustomerController.java and CustomerControllerDecorator.java using api.raml and extended rest call methods in CustomerControllerImpl.java.Used h2 database to store data and used flyway to execute the sql scripts.
+
 To run the application
 
 java -jar de.adorsys.jar
